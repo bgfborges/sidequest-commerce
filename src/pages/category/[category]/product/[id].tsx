@@ -1,5 +1,6 @@
 import axios from "axios";
 import { GetServerSideProps } from "next";
+import Head from "../../../../components/Head";
 import Header from "../../../../components/Header";
 import ProductBanner from "../../../../components/ProductBanner";
 
@@ -20,6 +21,7 @@ export default function Product({product}: ProductProps){
     console.log(product)
     return(
         <>
+            <Head title={product.name + '| Loja de Gadgets para Realidade Virtual'} />
             <Header />
             <ProductBanner 
             title={product.name} 

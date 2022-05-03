@@ -3,6 +3,7 @@ import Img from 'next/image'
 import { useEffect, useState } from 'react'
 import { Container, Categories, CategoryInfo, CategorySession, CategoryProducts } from './styles'
 import { AiFillRightSquare } from 'react-icons/ai'
+import Link from 'next/link'
 
 
 type Category = {
@@ -16,6 +17,7 @@ type Product = {
     name: string;
     id: string;
     thumbnail: string;
+    categoryId: number;
 }
 
 type ListCategoriesProps = {
@@ -109,13 +111,17 @@ export default function ListCategories({categoryCount, productCount}: ListCatego
 
                         <CategoryProducts>
                             {prevProducts.map( product => <li key={product.id}>
-                                <div className="thumbnail">
-                                    <Img src={product.thumbnail} layout="fill" objectFit='cover' />
-                                </div>
-                                <div className="info">
-                                    <h5>{product.name}</h5>
-                                    <AiFillRightSquare />
-                                </div>
+                                <Link href={`category/${product.categoryId}/product/${product.id}`}>
+                                    <a href="">
+                                        <div className="thumbnail">
+                                            <Img src={product.thumbnail} layout="fill" objectFit='cover' />
+                                        </div>
+                                        <div className="info">
+                                            <h5>{product.name}</h5>
+                                            <AiFillRightSquare />
+                                        </div>
+                                    </a>
+                                </Link>
                             </li>)}
                         </CategoryProducts>
                     </CategoryInfo>
