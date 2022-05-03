@@ -54,4 +54,8 @@ export const BannerButtons = styled.div`
     button {
         margin-right: 15px;
     }
+
+    span {
+        font-size: 0.9rem;
+    }
 `;

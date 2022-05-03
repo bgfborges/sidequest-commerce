@@ -118,7 +118,7 @@ export const CategoryInfo = styled.div<CategoryInfoProps>`
 
 export const CategoryProducts = styled.ul`
     width: calc(100% - 50px);
-    height: 50vh;
+    height: 30vh;
     margin: 20px;
     margin-top: 0;
     display: grid;
@@ -144,7 +144,7 @@ export const CategoryProducts = styled.ul`
             padding: 10px;
             font-weight: bold;
             z-index: 50;
-            opacity: 0.6;
+            opacity: 0.9;
             transition: all ease 200ms;
         }
 

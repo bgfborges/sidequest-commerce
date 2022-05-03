@@ -18,12 +18,12 @@ interface ProductProps {
 }
 
 export default function Product({product}: ProductProps){
-    console.log(product)
     return(
         <>
             <Head title={product.name + '| Loja de Gadgets para Realidade Virtual'} />
             <Header />
             <ProductBanner 
+            id={product.id}
             title={product.name} 
             image={product.thumbnail} 
             description={product.description} 

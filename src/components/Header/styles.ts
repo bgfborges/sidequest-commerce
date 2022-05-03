@@ -23,6 +23,7 @@ export const Container = styled.header<ContainerProps>`
 
         div {
             display: flex;
+            align-items: center;
         }
     }
 `;

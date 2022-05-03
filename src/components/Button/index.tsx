@@ -4,11 +4,13 @@ import { ButtonContainer } from './styles'
 type ButtonProps = {
     kind: 'primary' | 'secondary';
     text: string;
+    onClick?: () => {};
+    disabled?: boolean;
 }
 
-export default function Button({ kind, text }: ButtonProps) {
+export default function Button({ kind, text, onClick, disabled }: ButtonProps) {
     return(
-        <ButtonContainer kind={kind}>
+        <ButtonContainer kind={kind} onClick={onClick} disabled={disabled}>
             {text}
         </ButtonContainer>
     )

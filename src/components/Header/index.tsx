@@ -2,6 +2,8 @@ import Img from 'next/image'
 import { Container, Menu } from './styles';
 import SignIn from '../SignIn';
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import CartIcon from '../CartIcon';
 
 export default function Header(){
     const [isScroll, setIsScroll] = useState(false);
@@ -24,11 +26,12 @@ export default function Header(){
                 <Img src="/images/logo.png" alt="Sidequest Logo" height={64} width={176} />
 
                 <div>
-                <Menu>
-                    <li>Home</li>
-                    <li>Shop</li>
-                </Menu>
-                <SignIn />
+                    <Menu>
+                        <li><Link href="/"><a>Home</a></Link></li>
+                        <li>Shop</li>
+                    </Menu>
+                    <SignIn />
+                    <CartIcon />
                 </div>
             </div>
         </Container>
