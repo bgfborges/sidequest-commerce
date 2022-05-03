@@ -4,14 +4,14 @@ import SignIn from '../SignIn';
 import { useEffect, useState } from 'react';
 
 export default function Header(){
-    const [scroll, setScroll] = useState(false);
+    const [isScroll, setIsScroll] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
             if( window.scrollY > 0 ){
-                setScroll(true);
+                setIsScroll(true);
             } else {
-                setScroll(false);
+                setIsScroll(false);
             }
         }
 
@@ -19,7 +19,7 @@ export default function Header(){
     }, [])
 
     return(
-        <Container scroll={scroll}>
+        <Container scroll={isScroll}>
             <div className="content">
                 <Img src="/images/logo.png" alt="Sidequest Logo" height={64} width={176} />
 

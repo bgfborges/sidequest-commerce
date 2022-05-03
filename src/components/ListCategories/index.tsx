@@ -1,30 +1,43 @@
 import axios from 'axios'
 import Img from 'next/image'
 import { useEffect, useState } from 'react'
-import { Container, Categories, CategoryInfo, CategorySession } from './styles'
+import { Container, Categories, CategoryInfo, CategorySession, CategoryProducts } from './styles'
+import { AiFillRightSquare } from 'react-icons/ai'
 
-export default function ListCategories(){
 
-    const [categories, setCategories] = useState<string[]>([]);
+type Category = {
+    name: string;
+    thumbnail: string;
+    id: string;
+    description: string;
+}
 
-    // As long as the fakestoreapi doesnt have images for the categories, I'm going to create a static value
-    const [categoryImage, setCategoryImage] = useState<string[]>([]);
+type Product = {
+    name: string;
+    id: string;
+    thumbnail: string;
+}
 
-    useEffect(() => {
-        let images = [
-            'https://i.ibb.co/RyfRX3w/15ca317faac1451c71d17229a9097c94.png',
-            'https://i.ibb.co/ZxLbMTs/virtual-reality-illustration-free-vector.jpg',
-            'https://i.ibb.co/Qbrq08V/94ed2751374448280f39b17d68e763ac.jpg',
-            'https://i.ibb.co/vcd5GxL/virtual-reality.jpg'
-        ]
+type ListCategoriesProps = {
+    categoryCount: number;
+    productCount: number;
+}
 
-        setCategoryImage(images);
-    }, [])
+export default function ListCategories({categoryCount, productCount}: ListCategoriesProps){
+
+    const [categories, setCategories] = useState<Category[]>([]);
+    const [prevProducts, setPrevProducts] = useState<Product[]>([]);
+    const [isLoadedProducts, setIsLoadedProducsts] = useState<boolean>(false);
+    const [loadedCategory, setloadedCategory] = useState<string>('');
 
     // This API doesn't have products with the shop goal, but works to show how to use an external API
     const requestCategories = async () => {
-        const { data } = await axios('https://fakestoreapi.com/products/categories')
-        setCategories(data);
+        const { data: newCategories } = await axios(`https://6270a95ce1c7aec428f6669b.mockapi.io/api/v1/categories?page=1&limit=${categoryCount}`)
+        setCategories(newCategories)
+        setloadedCategory(newCategories[0].name)
+        
+        const { data: newProducts } = await axios(`https://6270a95ce1c7aec428f6669b.mockapi.io/api/v1/categories/${newCategories[0].id}/products?page=1&limit=${productCount}`)
+        setPrevProducts(newProducts)
     }
 
     // List the Product Categories from fakestoreapi.com
@@ -32,6 +45,15 @@ export default function ListCategories(){
         requestCategories();
     }, [])
 
+    // Function to handle the product by category call
+    const handleProductByCategoryCall = async (id: string, categoryName: string) => {
+        const { data } = await axios(`https://6270a95ce1c7aec428f6669b.mockapi.io/api/v1/categories/${id}/products?page=1&limit=${productCount}`)
+        setPrevProducts(data)
+        setIsLoadedProducsts(!isLoadedProducts)
+        setloadedCategory(categoryName)
+    }
+
+    console.log(isLoadedProducts);
     return(
         <Container>
             <div className="content">               
@@ -40,17 +62,36 @@ export default function ListCategories(){
 
                 <CategorySession>
                     <Categories>
-                        {categories.map( (category, i) => <li key={i}>
-                            <div className='image'>
-                                <Img src={categoryImage[i]} layout="fill" objectFit="cover" />
+                        {categories.map( (category) => <li key={category.id} onClick={async () => await handleProductByCategoryCall(category.id, category.name)}>
+                            <div className='thumbnail'>
+                                <Img src={category.thumbnail} layout="fill" objectFit="cover" />
                             </div>
-                            <div className="title">
-                                <h3>{category}</h3>
+                            <div className="info">
+                                <div className="overlay"></div>
+                                <h3>{category.name}</h3>
+                                <p>{category.description}</p>
                             </div>
                         </li> )}
                     </Categories>
+                    
+                    <CategoryInfo isLoadedProducts={isLoadedProducts}>
+                        <div className="title">
+                            <h4>{loadedCategory} {'>'} Produtos</h4>
+                            <p>Melhores produtos dessa categoria.</p>
+                        </div>
 
-                    <CategoryInfo></CategoryInfo>
+                        <CategoryProducts>
+                            {prevProducts.map( product => <li key={product.id}>
+                                <div className="thumbnail">
+                                    <Img src={product.thumbnail} layout="fill" objectFit='cover' />
+                                </div>
+                                <div className="info">
+                                    <h5>{product.name}</h5>
+                                    <AiFillRightSquare />
+                                </div>
+                            </li>)}
+                        </CategoryProducts>
+                    </CategoryInfo>
                 </CategorySession>
             </div>
         </Container>

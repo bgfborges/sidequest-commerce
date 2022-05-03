@@ -9,7 +9,7 @@ export default function Home() {
       <Head title="Sidequest Commerce | Compre os Gadgets" />
       <Header />
       <Banner />
-      <ListCategories />
+      <ListCategories categoryCount={4} productCount={4} />
     </div>
   )
 }
