@@ -10,6 +10,10 @@ export const Container = styled.div`
         font-weight: 500;
         margin-top: 10px;
     }
+    background-image: url('/images/background-elipse-right.png');
+    background-repeat: no-repeat;
+    background-position: top right;
+    background-size: contain;
 `;
 
 export const CategorySession = styled.div`
@@ -96,19 +100,24 @@ interface CategoryInfoProps {
 export const CategoryInfo = styled.div<CategoryInfoProps>`
     width: 100%;
     background: var(--gray-900);
-    padding: 30px;
+    padding: 50px;
 
     .title {
         h4 {
+            font-size: 1.5rem;
+        }
+        margin: 20px;
+
+        span {
+            color: var(--pink-900);
+            font-weight: 900;
             font-size: 2rem;
         }
-        margin-left: 20px;
-        margin-bottom: 20px;
     }
 `;
 
 export const CategoryProducts = styled.ul`
-    width: 100%;
+    width: calc(100% - 50px);
     height: 50vh;
     margin: 20px;
     margin-top: 0;

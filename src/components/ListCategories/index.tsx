@@ -31,29 +31,56 @@ export default function ListCategories({categoryCount, productCount}: ListCatego
     const [loadedCategory, setloadedCategory] = useState<string>('');
 
     // This API doesn't have products with the shop goal, but works to show how to use an external API
+    // Further improvements - make this function server side rendered for SEO improvements
     const requestCategories = async () => {
-        const { data: newCategories } = await axios(`https://6270a95ce1c7aec428f6669b.mockapi.io/api/v1/categories?page=1&limit=${categoryCount}`)
-        setCategories(newCategories)
-        setloadedCategory(newCategories[0].name)
-        
-        const { data: newProducts } = await axios(`https://6270a95ce1c7aec428f6669b.mockapi.io/api/v1/categories/${newCategories[0].id}/products?page=1&limit=${productCount}`)
-        setPrevProducts(newProducts)
+        // Basic error handling - further improvements
+        try {
+            const { data: newCategories } = await axios(`https://6270a95ce1c7aec428f6669b.mockapi.io/api/v1/categories?page=1&limit=${categoryCount}`)
+
+            let formatedCategories = newCategories.map((category: Category) => {
+                return {
+                    name: category.name.slice(0, 20),
+                    description: category.description.slice(0, 50) + '...',
+                    thumbnail: category.thumbnail,
+                    id: category.id
+                }
+            })
+
+            setCategories(formatedCategories)
+            setloadedCategory(newCategories[0].name)
+            
+            const { data: newProducts } = await axios(`https://6270a95ce1c7aec428f6669b.mockapi.io/api/v1/categories/${newCategories[0].id}/products?page=1&limit=${productCount}`)
+            setPrevProducts(newProducts)
+
+        } catch (e) {
+
+            console.log(e)
+
+        }
     }
 
-    // List the Product Categories from fakestoreapi.com
+    // List the Product Categories from mock.io
     useEffect(() => {
         requestCategories();
     }, [])
 
     // Function to handle the product by category call
     const handleProductByCategoryCall = async (id: string, categoryName: string) => {
-        const { data } = await axios(`https://6270a95ce1c7aec428f6669b.mockapi.io/api/v1/categories/${id}/products?page=1&limit=${productCount}`)
-        setPrevProducts(data)
-        setIsLoadedProducsts(!isLoadedProducts)
-        setloadedCategory(categoryName)
+        // Basic error handling - further improvements
+        try {
+
+            const { data } = await axios(`https://6270a95ce1c7aec428f6669b.mockapi.io/api/v1/categories/${id}/products?page=1&limit=${productCount}`)
+            setPrevProducts(data)
+            setIsLoadedProducsts(!isLoadedProducts)
+            setloadedCategory(categoryName)
+
+        } catch (e) {
+
+            console.log(e)
+
+        }
     }
 
-    console.log(isLoadedProducts);
     return(
         <Container>
             <div className="content">               
@@ -76,7 +103,7 @@ export default function ListCategories({categoryCount, productCount}: ListCatego
                     
                     <CategoryInfo isLoadedProducts={isLoadedProducts}>
                         <div className="title">
-                            <h4>{loadedCategory} {'>'} Produtos</h4>
+                            <h4><span>{loadedCategory}</span> {'>'} Produtos</h4>
                             <p>Melhores produtos dessa categoria.</p>
                         </div>
 

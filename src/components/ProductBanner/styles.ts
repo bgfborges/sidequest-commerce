@@ -14,14 +14,16 @@ export const Container = styled.div`
         display: flex;
         justify-content: space-between;
         margin-top: 200px;
+        flex-direction: row-reverse;
     }
 `;
 
-export const InfoContent = styled.div`
+export const ProductInfoContent = styled.div`
     width: 49%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding: 50px;
 
     h1 {
         font-size: 3.5rem;
@@ -39,7 +41,7 @@ export const InfoContent = styled.div`
     }
 `;
 
-export const ImageContent = styled.div`
+export const ProductImageContent = styled.div`
     width: 51%;
     position: relative;
     min-height: 800px;
