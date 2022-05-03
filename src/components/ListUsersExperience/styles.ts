@@ -34,6 +34,8 @@ export const Container = styled.ul`
             &:hover {
                 transform: scale(1.03);
                 font-weight: bold;
+                margin-left: 10px;
+                margin-top: 0;
             }
         }
     }

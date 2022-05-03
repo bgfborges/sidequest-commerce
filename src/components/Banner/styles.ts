@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
     width: 100%;
-    height: 80vh;
+    height: 90vh;
     display: flex;
     align-items: center;
     background-image: url('/images/background-elipse.png');
@@ -18,7 +18,6 @@ export const Container = styled.div`
 `;
 
 export const InfoContent = styled.div`
-    padding: 50px;
     width: 49%;
     display: flex;
     flex-direction: column;
@@ -41,10 +40,10 @@ export const InfoContent = styled.div`
 `;
 
 export const ImageContent = styled.div`
-    padding: 50px;
     width: 51%;
     position: relative;
     min-height: 800px;
+    z-index: 110;
 `;
 
 export const BannerButtons = styled.div`

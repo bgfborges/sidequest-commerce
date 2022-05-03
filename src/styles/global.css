@@ -43,7 +43,7 @@
 body {
     background: var(--black);
     color: var(--white);
-    height: 120vh;
+    height: 620vh;
 }
 
 body, input, textarea, select, button {
@@ -62,6 +62,6 @@ a {
 /* Define the global width for the content */
 
 .content {
-    max-width: 95%;
+    max-width: 90%;
     margin: 0 auto;
 }

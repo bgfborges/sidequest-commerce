@@ -9,7 +9,7 @@ export default function Banner(){
             <div className='content'>
                 <InfoContent>
                     <span>👋 Welcome!</span>
-                    <h1>Nós Transformamos Comer e Beber Num Jogo</h1>
+                    <h1>Nós Transformamos Comer e Beber em Jogo.</h1>
                     <p>Adquira agora o equipamento necessário para ter sua experiência por Delivery.</p>
 
                     <BannerButtons>

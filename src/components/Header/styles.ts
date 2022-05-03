@@ -5,11 +5,12 @@ interface ContainerProps {
 }
 
 // It's a good practice to call Container all the component main div
-export const Container = styled.div<ContainerProps>`
+export const Container = styled.header<ContainerProps>`
     width: 100%;
     padding: 10px;
     position: fixed;
-    background: ${ props => props.scroll && ' linear-gradient( to right, var(--black), var(--pink-900))'};
+    z-index: 100;
+    background: ${ props => props.scroll && 'linear-gradient( to right, var(--black), var(--pink-900))'};
 
     img {
         width: 100px;
