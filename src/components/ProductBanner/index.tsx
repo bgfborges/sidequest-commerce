@@ -4,6 +4,7 @@ import Button from '../Button'
 import ListUsersExperience from '../ListUsersExperience'
 import { Container, ProductImageContent, ProductInfoContent, BannerButtons } from './styles'
 import { CartContext } from '../../contexts/CartContext'
+import { useRouter } from 'next/router';
 
 interface ProductBanner {
     title: string;
@@ -12,16 +13,20 @@ interface ProductBanner {
     price: string;
     category: string;
     id: string;
+    categoryId: string;
 }
 
 export default function ProductBanner(product: ProductBanner){
 
     const { state, dispatch } = useContext(CartContext);
     const [isProductOnCart, setIsProductOnCart] = useState(false);
+    const route = useRouter();
 
     const addProductToCart = async () => {
         // It's very basic, so we are not checking the Stock, what we could do here
         dispatch({ type: 'CART_ADD_ITEM', payload: {...product, quantity: 1} })
+
+        route.push('/cart')
     }
 
     // For good practice, make an unacloped function to check product on the cart

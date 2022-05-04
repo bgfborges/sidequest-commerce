@@ -11,6 +11,7 @@ type Product = {
     price: string;
     description: string;
     category: string;
+    categoryId: string;
 }
 
 interface ProductProps {
@@ -29,6 +30,7 @@ export default function Product({product}: ProductProps){
             description={product.description} 
             price={product.price} 
             category={product.category} 
+            categoryId={product.categoryId}
             />
         </>
     )
@@ -52,7 +54,8 @@ export const getServerSideProps: GetServerSideProps = async ({params}) => {
             currencyDisplay: 'narrowSymbol'
           }).format(data.price / 100),
         description: data.description,
-        category: category.name
+        category: category.name,
+        categoryId: params.category
     }
 
     return {

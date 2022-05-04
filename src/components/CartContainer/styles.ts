@@ -3,20 +3,19 @@ import styled from 'styled-components'
 export const Container = styled.div`
     min-width: 100%;
     min-height: 80vh;
-    display: flex;
-    align-items: center;
 
     .content {
         flex: 1;
+        padding-top: 200px;
     }
 `;
 
 export const ProductListContainer = styled.div`
     width: 100%;
-    height: 500px;
     background: var(--white);
     border-radius: 5px;
     padding: 30px;
+    min-height: 300px;
 
     color: black;
 
@@ -54,31 +53,41 @@ export const ProductListItems = styled.ul`
 `;
 
 export const InputQuantity = styled.div`
-    width: 180px;
     position: relative;
     display: flex;
     align-items: center;
+    background: #efefef;
+    padding: 10px 20px;
+    border-radius: 4px;
 
     input {
         width: 100%;
-        padding: 15px;
+        padding: 10px;
+        margin: 0 10px;
     }
 
     svg {
-        width: 25px;
-        height: 25px;
-        margin: 10px;
         cursor: pointer;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
     }
 `;
 
 export const ProductInfo = styled.div`
-    width: 50%;
     display: flex;
     align-items: center;
-    h2 {
-        font-size: 1rem;
+
+    a {
+        width: 50%;
+    }
+    
+    > div {
         margin-left: 10px;
+
+        h2 {
+            font-size: 1rem;
+        }
     }
 `;
 
@@ -122,4 +131,28 @@ export const ProductImage = styled.img`
     height: 60px;
     object-fit: cover;
     border-radius: 3px;
+`;
+
+export const EndItemControls = styled.div`
+    width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    svg {
+        width: 20px;
+        height: 20px;
+    }
+`;
+
+export const ExcludeIcon = styled.div`
+    svg {
+        width: 20px;
+        height: 20px;
+        margin: 10px;
+        cursor: pointer;
+    }
+
+    border-left: 1px solid #ccc;
+    margin-left: 10px;
 `;

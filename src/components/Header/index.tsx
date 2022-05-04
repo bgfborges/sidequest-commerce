@@ -31,7 +31,7 @@ export default function Header(){
                         <li>Shop</li>
                     </Menu>
                     <SignIn />
-                    <CartIcon />
+                    <Link href="/cart"><a href="/cart"><CartIcon /></a></Link>
                 </div>
             </div>
         </Container>
