@@ -27,7 +27,19 @@ It's going to be developed with (React) NextJS - then it's possible to solve a R
 ## Further Updates
 
 - Documentation of Components
+- Run ESLint / Prettier to make a standard code (with the syntax, ; '' etc.)
 
-# Deploy Workflow
+# Deploy Workflow and Considerations
 
+We could make considerations to self-solutions in AWS for example, but today, it's highly recommendated to deploy the React (mainly Next) applications with Vercel. Or then some others specialized solutions as Heroko or Netlify. I'll make a testing deploy of this application with vercel and observations to workflow.
 
+1. Setup the enviroment variables (or secrets): next already handle many of the enviroment variables, and it's considered by Vercel. So in this case, where we don't have any secret or anything (we have a public api) we can set the variables like that:
+    1.2. env.production -> NEXT_PUBLIC_URL=
+    1.2. env.development -> NEXT_PUBLIC_URL=http://localhost:3000
+
+    PS. In case we are running any real application, we need not only to set the variables, but use the advantage of NEXT to handle what should be public in client-side, and what we can handle in the intermediate interface in Node with the Next SSR/SSG etc.
+
+2. Add the Vercel CLI.
+3. Create a new Repository.
+4. Add .vercelignore.
+5. Submite the new project to Vercel (this first case, we can run --prod flag to send directly to production / further real production applications, should run in the development application in paralel that Vercel already offer us in a simple way). Anyway, the best pipeline include a github CI/CD, what we will make for this project and connect to Vercel Deploy.

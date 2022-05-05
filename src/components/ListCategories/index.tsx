@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { StoreAPI } from '../../services/api'
 import { Product } from '../../models/Product'
 import { Category } from '../../models/Category'
+import { Link as Anchor, animateScroll as scroll } from "react-scroll"
 
 
 
@@ -39,20 +40,29 @@ export default function ListCategories({categories, products}: ListCategoriesPro
 
                 <CategorySession>
                     <Categories>
-                        {categories.map( (category) => <li key={category.id} data-testid="category" onClick={async () => await handleProductByCategoryCall(category.id, category.name)}>
-                            <div className='thumbnail'>
-                                <Img src={category.thumbnail} layout="fill" objectFit="cover" />
-                            </div>
-                            <div className="info">
-                                <div className="overlay"></div>
-                                <h3>{category.name}</h3>
-                                <p>{category.description}</p>
-                            </div>
-                        </li> )}
+                        <Anchor
+                        activeClass="active"
+                        to="products"
+                        spy={true}
+                        smooth={true}
+                        offset={-70}
+                        duration={500}                    
+                        >
+                            {categories.map( (category) => <li key={category.id} data-testid="category" onClick={async () => await handleProductByCategoryCall(category.id, category.name)}>
+                                <div className='thumbnail'>
+                                    <Img src={category.thumbnail} layout="fill" objectFit="cover" />
+                                </div>
+                                <div className="info">
+                                    <div className="overlay"></div>
+                                    <h3>{category.name}</h3>
+                                    <p>{category.description}</p>
+                                </div>
+                            </li> )}
+                        </Anchor>
                     </Categories>
                     
                     <CategoryInfo>
-                        <div className="title">
+                        <div className="title" id="products">
                         <h4><span>{categoryTitle}</span> {'>'} Produtos</h4>
                             <p>Melhores produtos dessa categoria.</p>
                         </div>

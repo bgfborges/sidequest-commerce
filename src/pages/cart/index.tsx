@@ -3,7 +3,7 @@ import Head from "../../components/Head";
 import { useContext, useEffect, useRef, useState } from 'react'
 import { CartContext } from '../../contexts/CartContext'
 import Button from '../../components/Button';
-import { Container, InputQuantity, ProductListContainer, ProductListItems, ResumeInfo, ProductInfo, ProductImage, EndItemControls, ExcludeIcon } from './styles'
+import { Container, InputQuantity, ProductListContainer, ProductListItems, ResumeInfo, ProductInfo, ProductImage, EndItemControls, ExcludeIcon } from '../../styles/cartStyles'
 import { MdBookmarkRemove } from 'react-icons/md'
 import Link from 'next/link';
 import { useRouter } from 'next/router';

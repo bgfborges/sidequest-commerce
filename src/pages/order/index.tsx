@@ -1,4 +1,4 @@
-import { Container, OrderContent } from './styles'
+import { Container, OrderContent } from '../../styles/orderStyles'
 import Header from "../../components/Header";
 import Head from '../../components/Head';
 

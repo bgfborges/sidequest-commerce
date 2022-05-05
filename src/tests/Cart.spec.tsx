@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from '@testing-library/react'
-import Cart from '.'
-import { CartContext } from '../../contexts/CartContext'
+import Cart from '../pages/cart'
+import { CartContext } from '../contexts/CartContext'
 
 // Tests with Context API
 const customRender = (ui, {providerProps, ...renderOptions}) => {
