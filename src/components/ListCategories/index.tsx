@@ -41,14 +41,6 @@ export default function ListCategories({categories, products}: ListCategoriesPro
                 <CategorySession>
                     <Categories>
                         {categories.map( (category) => <li key={category.id} data-testid="category" onClick={async () => await handleProductByCategoryCall(category.id, category.name)}>
-                            <Anchor
-                            activeClass="active"
-                            to="products"
-                            spy={true}
-                            smooth={true}
-                            offset={-70}
-                            duration={500}                    
-                            >
                                 <div className='thumbnail'>
                                     <Img src={category.thumbnail} layout="fill" objectFit="cover" />
                                 </div>
@@ -57,7 +49,6 @@ export default function ListCategories({categories, products}: ListCategoriesPro
                                     <h3>{category.name}</h3>
                                     <p>{category.description}</p>
                                 </div>
-                            </Anchor>
                         </li> )}
                     </Categories>
                     
