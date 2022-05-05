@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 interface ButtonProps {
     kind: 'primary' | 'secondary';
+    simpleDisabled?: boolean;
 }
 
 export const ButtonContainer = styled.button<ButtonProps>`
@@ -21,7 +22,7 @@ export const ButtonContainer = styled.button<ButtonProps>`
     /* background: ${props => props.kind === 'primary' ? 'linear-gradient(to right, var(--pink-900), var(--pink-700))' : 'white'}; */
     color: ${props => props.kind === 'primary' ? 'var(--white)' : 'var(--black)'};
 
-    background: ${props => props?.disabled ? 'var(--gray-900)' : props.kind === 'primary' ? 'linear-gradient(to right, var(--pink-900), var(--pink-700))' : 'white'};
-    color: ${props => props?.disabled && '#444444'};
+    background: ${props => props?.simpleDisabled ? 'var(--gray-900)' : props.kind === 'primary' ? 'linear-gradient(to right, var(--pink-900), var(--pink-700))' : 'white'};
+    color: ${props => props?.simpleDisabled && '#444444'};
 
 `;

@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "yarn jest"
   },
   "dependencies": {
     "axios": "^0.27.2",
@@ -15,15 +16,24 @@
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-icons": "^4.3.1",
+    "react-query": "^3.38.1",
+    "react-scroll": "^1.8.7",
     "styled-components": "^5.3.5"
   },
   "devDependencies": {
+    "@testing-library/dom": "^8.13.0",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.2.0",
     "@types/axios": "^0.14.0",
     "@types/node": "^17.0.31",
     "@types/react": "^18.0.8",
     "@types/styled-components": "^5.1.25",
+    "babel-jest": "^28.0.3",
     "eslint": "8.14.0",
     "eslint-config-next": "12.1.6",
+    "jest": "^28.0.3",
+    "jest-dom": "^4.0.0",
+    "jest-environment-jsdom": "^28.0.2",
     "typescript": "^4.6.4"
   }
 }

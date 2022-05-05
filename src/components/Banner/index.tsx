@@ -2,8 +2,11 @@ import { Container, InfoContent, ImageContent, BannerButtons } from './styles'
 import Img from 'next/image'
 import Button from '../Button'
 import ListUsersExperience from '../ListUsersExperience'
+import { Link as Anchor, animateScroll as scroll } from "react-scroll";
+import Link from 'next/link';
 
 export default function Banner(){
+
     return(
         <Container>
             <div className='content'>
@@ -13,8 +16,17 @@ export default function Banner(){
                     <p>Adquira agora o equipamento necessário para ter sua experiência por Delivery.</p>
 
                     <BannerButtons>
-                        <Button kind="primary" text='Ver Produtos' />
-                        <Button kind="secondary" text='Saiba Mais' />
+                        <Anchor
+                        activeClass="active"
+                        to="categories"
+                        spy={true}
+                        smooth={true}
+                        offset={-70}
+                        duration={500}                    
+                        >
+                            <Button kind="primary" text='Ver Produtos' />
+                        </Anchor>
+                        <Link href="/docs"><a><Button kind="secondary" text='Saiba Mais' /></a></Link>
                     </BannerButtons>
 
                     <ListUsersExperience />

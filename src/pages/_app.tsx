@@ -1,11 +1,15 @@
+import { QueryClientProvider } from 'react-query';
 import { CartProvider } from '../contexts/CartContext';
+import { queryClient } from '../services/api';
 import '../styles/global.css';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <CartProvider>
-      <Component {...pageProps} />
-    </CartProvider>
+    <QueryClientProvider client={queryClient}>
+      <CartProvider>
+        <Component {...pageProps} />
+      </CartProvider>
+    </QueryClientProvider>
   )
 }
 

@@ -1,9 +1,11 @@
 import { Container, OrderContent } from './styles'
 import Header from "../../components/Header";
+import Head from '../../components/Head';
 
 export default function Order(){
     return (
         <>
+            <Head title="Ordem de Serviço | Sidequest" />
             <Header />
             <Container>
                 <div className="content">

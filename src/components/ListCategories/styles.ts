@@ -93,11 +93,7 @@ export const Categories = styled.ul`
     }
 `;
 
-interface CategoryInfoProps {
-    isLoadedProducts: boolean;
-}
-
-export const CategoryInfo = styled.div<CategoryInfoProps>`
+export const CategoryInfo = styled.div`
     width: 100%;
     background: var(--gray-900);
     padding: 50px;

@@ -28,10 +28,10 @@ export default function Header(){
                 <div>
                     <Menu>
                         <li><Link href="/"><a>Home</a></Link></li>
-                        <li>Shop</li>
+                        <li><Link href="/docs"><a>Docs</a></Link></li>
                     </Menu>
                     <SignIn />
-                    <Link href="/cart"><a href="/cart"><CartIcon /></a></Link>
+                    <Link href="/cart"><a href="#"><CartIcon /></a></Link>
                 </div>
             </div>
         </Container>

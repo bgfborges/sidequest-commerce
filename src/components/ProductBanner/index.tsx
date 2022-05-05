@@ -14,28 +14,23 @@ interface ProductBanner {
     category: string;
     id: string;
     categoryId: string;
+    isOnCart: boolean;
 }
 
 export default function ProductBanner(product: ProductBanner){
 
-    const { state, dispatch } = useContext(CartContext);
-    const [isProductOnCart, setIsProductOnCart] = useState(false);
+    const { dispatch } = useContext(CartContext);
+    const [isProductOnCart, setIsProductOnCart] = useState<boolean>(product.isOnCart);
     const route = useRouter();
 
     const addProductToCart = async () => {
         // It's very basic, so we are not checking the Stock, what we could do here
         dispatch({ type: 'CART_ADD_ITEM', payload: {...product, quantity: 1} })
-
+        setIsProductOnCart(true);
         route.push('/cart')
     }
 
     // For good practice, make an unacloped function to check product on the cart
-
-    useEffect(() => {
-        const productOnCart = !!state.cart.cartItems.find(item => item.id === product.id )
-
-        setIsProductOnCart(productOnCart);
-    }, [state, product.id])
 
     return (
         <Container>
@@ -49,7 +44,7 @@ export default function ProductBanner(product: ProductBanner){
 
                     <BannerButtons>
                         <Button kind="primary" text='One Click Purchase' />
-                        <Button kind="secondary" text={isProductOnCart ? 'Ver Carrinho' : 'Adicionar ao Carrinho'} onClick={addProductToCart} disabled={isProductOnCart} />
+                        <Button kind="secondary" text={isProductOnCart ? 'Ver Carrinho' : 'Adicionar ao Carrinho'} onClick={addProductToCart} simpleDisabled={isProductOnCart} />
                         <span>Produto Adicionado</span>
                     </BannerButtons>
 
