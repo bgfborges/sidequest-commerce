@@ -24,7 +24,7 @@ It's going to be developed with (React) NextJS - then it's possible to solve a R
 - List Cart Products.
 - Send Order to Backend.
 - Unitary Tests.
-- Mock the api values (it's written as optional, so for the best result I'll use a Fake API named https://fakestoreapi.com/ - and simulate a real daily job).
+- Mock the api values (it's written as optional, so for the best result I'll use a mock api that I've built in mock.io - and simulate a real daily job). But the values returned from it isn't related to the project propose (images, product names etc.)
 
 ## Further Updates
 
