@@ -43,3 +43,4 @@ We could make considerations to self-solutions in AWS for example, but today, it
 3. Create a new Repository.
 4. Add .vercelignore.
 5. Submite the new project to Vercel (this first case, we can run --prod flag to send directly to production / further real production applications, should run in the development application in paralel that Vercel already offer us in a simple way). Anyway, the best pipeline include a github CI/CD, what we will make for this project and connect to Vercel Deploy.
+6. Further - add the Vercel Checks before accepting in production.
