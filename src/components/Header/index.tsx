@@ -1,5 +1,5 @@
 import Img from 'next/image'
-import { Container, Menu } from './styles';
+import { Container, Menu, Logo } from './styles';
 import SignIn from '../SignIn';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
@@ -23,7 +23,9 @@ export default function Header(){
     return(
         <Container scroll={isScroll}>
             <div className="content">
-                <Img src="/images/logo.png" alt="Sidequest Logo" height={64} width={176} />
+                <Logo>
+                    <Img src="/images/logo.png" alt="Sidequest Logo" height={64} width={176} />
+                </Logo>
 
                 <div>
                     <Menu>

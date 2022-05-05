@@ -28,6 +28,14 @@ export const Container = styled.header<ContainerProps>`
     }
 `;
 
+export const Logo = styled.div`
+    width: 150px;
+
+    @media (max-width: 720px){
+        display: none !important;
+    }
+`;
+
 export const Menu = styled.ul`
     display: flex;
     flex-direction: row;

@@ -98,7 +98,6 @@ export const Categories = styled.ul`
 
     @media (max-width: 720px){
         grid-template-columns: 1fr;
-        margin-top: 50px;
     }
 `;
 
