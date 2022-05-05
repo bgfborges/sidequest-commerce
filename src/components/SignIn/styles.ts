@@ -8,5 +8,6 @@ export const Container = styled.button`
 
     @media (max-width: 720px){
         padding: 10px 20px;
+        font-size: 0.8rem;
     }
 `;
