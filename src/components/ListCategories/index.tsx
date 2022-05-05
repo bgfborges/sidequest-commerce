@@ -30,6 +30,8 @@ export default function ListCategories({categories, products}: ListCategoriesPro
         // Because doesn't have a product name in the API model, need to get from here
         const category = await storeApi.getCategory(products[0].categoryId)
         setCategoryTitle(category.name)
+
+        scroll.scrollToBottom()
     }
 
     return(
