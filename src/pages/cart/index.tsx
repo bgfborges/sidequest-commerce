@@ -46,6 +46,12 @@ export default function Cart() {
 
         getTotal()
     }
+    
+    const handleExcludeItem = (id) => {
+        dispatch({ type: 'CART_REMOVE_ITEM', payload: id })
+
+        getTotal()
+    }
 
     const handleSubmitCart = async () => {
         // Send data to the server API
@@ -99,7 +105,7 @@ export default function Cart() {
                                                 <input type="number" min="1" value={product.quantity} onChange={(e) => handleInputQuantityChange(product, e)} />
                                             </InputQuantity>
                                             <ExcludeIcon>
-                                                <MdBookmarkRemove />
+                                                <MdBookmarkRemove onClick={() => handleExcludeItem(product.id)} />
                                             </ExcludeIcon>
                                         </EndItemControls>
                                     </li>
