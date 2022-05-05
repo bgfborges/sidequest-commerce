@@ -19,14 +19,9 @@ export default function Cart() {
     const storeApi = new StoreAPI()
 
     const updateCartItems = () => {
-        let products = state.cart.cartItems;
-        setProducts(products)
-    }
+        // Update initial value
+        setProducts(state.cart.cartItems)
 
-    // Update the Cart Items and Total
-    useEffect(() => {
-        updateCartItems()
-        
         // This because the first call need to be from the state
         const total = new Intl.NumberFormat('es-US', {
             style: 'currency',
@@ -35,7 +30,12 @@ export default function Cart() {
         }).format(state.cart.cartItems.reduce((a, c) => a + Number(c.quantity) * Number(c.price.replace(/[^0-9.-]+/g,"")), 0))
 
         setTotal(total);
-    }, [])
+    }
+
+    // Update the Cart Items and Total
+    useEffect(() => {
+        updateCartItems()
+    }, [state.cart.cartItems]) // if ContextAPI State Change, update the local state view
 
 
     const handleInputQuantityChange = (product, e) => {
@@ -47,10 +47,8 @@ export default function Cart() {
         getTotal()
     }
     
-    const handleExcludeItem = (id) => {
-        dispatch({ type: 'CART_REMOVE_ITEM', payload: id })
-
-        getTotal()
+    const handleExcludeItem = (item) => {
+        dispatch({ type: 'CART_REMOVE_ITEM', payload: item }) // Dispatch the remove item to the Context API
     }
 
     const handleSubmitCart = async () => {
@@ -73,7 +71,6 @@ export default function Cart() {
             currency: 'BRL',
             currencyDisplay: 'narrowSymbol'
         }).format(products.reduce((a, c) => a + Number(c.quantity) * Number(c.price.replace(/[^0-9.-]+/g,"")), 0))
-        console.log(products);
         setTotal( total );
     }
 
@@ -105,7 +102,7 @@ export default function Cart() {
                                                 <input type="number" min="1" value={product.quantity} onChange={(e) => handleInputQuantityChange(product, e)} />
                                             </InputQuantity>
                                             <ExcludeIcon>
-                                                <MdBookmarkRemove onClick={() => handleExcludeItem(product.id)} />
+                                                <MdBookmarkRemove onClick={() => handleExcludeItem(product)} />
                                             </ExcludeIcon>
                                         </EndItemControls>
                                     </li>

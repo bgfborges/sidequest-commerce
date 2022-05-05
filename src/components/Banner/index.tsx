@@ -26,7 +26,7 @@ export default function Banner(){
                         >
                             <Button kind="primary" text='Ver Produtos' />
                         </Anchor>
-                        <Link href="/docs"><a><Button kind="secondary" text='Saiba Mais' /></a></Link>
+                        <Link href="https://github.com/bgfborges/sidequest-commerce"><a><Button kind="secondary" text='Saiba Mais' /></a></Link>
                     </BannerButtons>
 
                     <ListUsersExperience text="Veja como é a Experiência" />

@@ -33,9 +33,11 @@ function reducer(state, action) {
       const cartItems = state.cart.cartItems.filter(
         (item) => item.id !== action.payload.id
       );
+      console.log(cartItems)
       Cookies.set('cartItems', JSON.stringify(cartItems));
       return { ...state, cart: { ...state.cart, cartItems } };
     }
+    // Further Implementation
     case 'CART_CLEAR':
       return { ...state, cart: { ...state.cart, cartItems: [] } };
 
