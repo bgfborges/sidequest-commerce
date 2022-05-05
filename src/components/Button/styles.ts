@@ -26,7 +26,7 @@ export const ButtonContainer = styled.button<ButtonProps>`
     color: ${props => props?.simpleDisabled && '#444444'};
 
     @media (max-width: 720px){
-        padding: 20px 40px;
+        padding: 20px 20px;
     }
 
 `;

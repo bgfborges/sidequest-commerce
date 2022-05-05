@@ -25,7 +25,7 @@ export const Container = styled.div`
             flex-direction: column-reverse;
             justify-content: center;
             align-content: center;
-            margin-top: 100px;
+            margin-top: 200px;
         }
     }
 `;
