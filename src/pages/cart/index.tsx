@@ -111,7 +111,7 @@ export default function Cart() {
                                         <li>Resumo ({products.reduce((a, c) => a + Number(c.quantity), 0)} Items)</li>
                                         <li>Coupon: R$0</li>
                                         <li>Discount: R$0</li>
-                                        <li>Total: {total}</li>
+                                        <li>{`Total: ${total}`}</li>
                                     </ul>
                                 </div>
                                 <Button text='Finalizar Compra' kind="primary" onClick={handleSubmitCart} />

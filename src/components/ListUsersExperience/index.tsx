@@ -7,7 +7,11 @@ type user = {
     image: string;
 }
 
-export default function ListUsersExperience(){
+interface ListUsersExperience {
+    text: string;
+}
+
+export default function ListUsersExperience({ text }: ListUsersExperience){
 
     const [users, setUsers] = useState<user[]>([]);
 
@@ -40,7 +44,7 @@ export default function ListUsersExperience(){
     return(
         <Container>
             {users.map( (user, i) => user && <li key={i}><Img src={user.image} alt={user.name} width={32} height={32} objectFit='contain' /></li> )}
-            <li>Veja como nossos clientes usam</li>
+            <li>{text}</li>
         </Container>
     )
 }

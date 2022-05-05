@@ -16,6 +16,14 @@ export const Container = styled.div`
         margin-top: 200px;
         flex-direction: row-reverse;
     }
+
+    @media (max-width: 720px){
+        height: auto;
+
+        .content{
+            flex-direction: column-reverse;
+        }
+    }
 `;
 
 export const ProductInfoContent = styled.div`
@@ -39,6 +47,14 @@ export const ProductInfoContent = styled.div`
         font-size: 1.3rem;
         margin-bottom: 15px;
     }
+
+    @media (max-width: 720px){
+        width: 100%;
+
+        h1 {
+            font-size: 2.5rem;
+        }
+    }
 `;
 
 export const ProductImageContent = styled.div`
@@ -46,16 +62,48 @@ export const ProductImageContent = styled.div`
     position: relative;
     min-height: 800px;
     z-index: 90;
+
+    @media (max-width: 720px){
+        width: 100%;
+        min-height: 200px;
+    }
 `;
 
 export const BannerButtons = styled.div`
     padding-top: 50px;
+    display: flex;
 
     button {
         margin-right: 15px;
     }
 
-    span {
-        font-size: 0.9rem;
+    div{
+        span {
+            font-size: 0.9rem;
+        }
     }
+
+    @media (max-width: 720px){
+        flex-direction: column;
+
+        button {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+    }
+
+    @media (max-width: 1080px) and (min-width: 720px) {
+        div{
+            text-align: center;
+
+            button {
+                margin-bottom: 10px;
+            }
+
+            span {
+                font-size: 0.9rem;
+            }
+        }
+    }
+    
 `;

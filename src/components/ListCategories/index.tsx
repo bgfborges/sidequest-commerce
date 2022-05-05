@@ -17,6 +17,7 @@ interface ListCategoriesProps {
 export default function ListCategories({categories, products}: ListCategoriesProps){
 
     const [loadedProducts, setLoadedProducts] = useState<Product[]>(products)
+    const [categoryTitle, setCategoryTitle] = useState<string>(categories[0].name);
 
     const storeApi = new StoreAPI();
 
@@ -24,6 +25,10 @@ export default function ListCategories({categories, products}: ListCategoriesPro
     const handleProductByCategoryCall = async (id: string, categoryName: string) => {
         const products = await storeApi.getProducts(id, 4)
         setLoadedProducts(products)
+
+        // Because doesn't have a product name in the API model, need to get from here
+        const category = await storeApi.getCategory(products[0].categoryId)
+        setCategoryTitle(category.name)
     }
 
     return(
@@ -34,7 +39,7 @@ export default function ListCategories({categories, products}: ListCategoriesPro
 
                 <CategorySession>
                     <Categories>
-                        {categories.map( (category) => <li key={category.id} onClick={async () => await handleProductByCategoryCall(category.id, category.name)}>
+                        {categories.map( (category) => <li key={category.id} data-testid="category" onClick={async () => await handleProductByCategoryCall(category.id, category.name)}>
                             <div className='thumbnail'>
                                 <Img src={category.thumbnail} layout="fill" objectFit="cover" />
                             </div>
@@ -48,7 +53,7 @@ export default function ListCategories({categories, products}: ListCategoriesPro
                     
                     <CategoryInfo>
                         <div className="title">
-                            <h4><span>{categories[0].name}</span> {'>'} Produtos</h4>
+                        <h4><span>{categoryTitle}</span> {'>'} Produtos</h4>
                             <p>Melhores produtos dessa categoria.</p>
                         </div>
 

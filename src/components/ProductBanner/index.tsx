@@ -44,11 +44,13 @@ export default function ProductBanner(product: ProductBanner){
 
                     <BannerButtons>
                         <Button kind="primary" text='One Click Purchase' />
-                        <Button kind="secondary" text={isProductOnCart ? 'Ver Carrinho' : 'Adicionar ao Carrinho'} onClick={addProductToCart} simpleDisabled={isProductOnCart} />
-                        <span>Produto Adicionado</span>
+                        <div>
+                            <Button kind="secondary" text={isProductOnCart ? 'Ver Carrinho' : 'Adicionar ao Carrinho'} onClick={addProductToCart} simpleDisabled={isProductOnCart} />
+                            {isProductOnCart && <span>Produto Adicionado</span>}
+                        </div>
                     </BannerButtons>
 
-                    <ListUsersExperience />
+                    <ListUsersExperience text="Veja como os clientes usam" />
                 </ProductInfoContent>
                 <ProductImageContent>
                     <Img src={product.image} alt="Girl with Virtual Reality Glasses" layout='fill' objectFit='contain' />

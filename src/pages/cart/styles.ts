@@ -29,6 +29,12 @@ export const ProductListContainer = styled.div`
     > div {
         display: flex;
     }
+
+    @media (max-width: 720px){
+        > div {
+            flex-direction: column;
+        }
+    }
 `;
 
 export const ProductListItems = styled.ul`
@@ -49,6 +55,14 @@ export const ProductListItems = styled.ul`
         display: flex;
         justify-content: space-between;
         align-items: center;
+    }
+
+    @media (max-width: 720px){
+        width: 100%;
+
+        li{
+            flex-direction: column;
+        }
     }
 `;
 
@@ -87,6 +101,12 @@ export const ProductInfo = styled.div`
 
         h2 {
             font-size: 1rem;
+        }
+    }
+
+    @media (max-width: 720px){
+        > div {
+            margin: 0;
         }
     }
 `;

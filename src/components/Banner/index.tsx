@@ -29,7 +29,7 @@ export default function Banner(){
                         <Link href="/docs"><a><Button kind="secondary" text='Saiba Mais' /></a></Link>
                     </BannerButtons>
 
-                    <ListUsersExperience />
+                    <ListUsersExperience text="Veja como é a Experiência" />
                 </InfoContent>
                 <ImageContent>
                     <Img src="/images/banner-vr.svg" alt="Girl with Virtual Reality Glasses" layout='fill' objectFit='contain' />

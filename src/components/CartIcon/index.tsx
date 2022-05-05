@@ -22,7 +22,7 @@ export default function CartIcon() {
     return(
         <Container>
             <BsFillCartFill />
-            <span>{cartItems.cart.cartItems.length}</span>
+            <span className="badge">{cartItems.cart.cartItems.length}</span>
         </Container>
     )
 }

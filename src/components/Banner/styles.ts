@@ -15,6 +15,19 @@ export const Container = styled.div`
         justify-content: space-between;
         margin-top: 200px;
     }
+
+    @media (max-width: 1080px){
+        
+    }
+
+    @media (max-width: 720px){
+        .content {
+            flex-direction: column-reverse;
+            justify-content: center;
+            align-content: center;
+            margin-top: 100px;
+        }
+    }
 `;
 
 export const InfoContent = styled.div`
@@ -37,6 +50,14 @@ export const InfoContent = styled.div`
         font-size: 1.3rem;
         margin-bottom: 15px;
     }
+
+    @media (max-width: 720px){
+        width: 100%;
+
+        h1 {
+            font-size: 2.5rem;
+        }
+    }
 `;
 
 export const ImageContent = styled.div`
@@ -44,6 +65,11 @@ export const ImageContent = styled.div`
     position: relative;
     min-height: 800px;
     z-index: 90;
+
+    @media (max-width: 720px){
+        width: 100%;
+        min-height: auto;
+    }
 `;
 
 export const BannerButtons = styled.div`

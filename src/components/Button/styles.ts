@@ -25,4 +25,8 @@ export const ButtonContainer = styled.button<ButtonProps>`
     background: ${props => props?.simpleDisabled ? 'var(--gray-900)' : props.kind === 'primary' ? 'linear-gradient(to right, var(--pink-900), var(--pink-700))' : 'white'};
     color: ${props => props?.simpleDisabled && '#444444'};
 
+    @media (max-width: 720px){
+        padding: 20px 40px;
+    }
+
 `;
