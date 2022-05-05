@@ -21,6 +21,8 @@ export const Container = styled.div`
     }
 
     @media (max-width: 720px){
+        margin-bottom: 50px;
+
         .content {
             flex-direction: column-reverse;
             justify-content: center;
